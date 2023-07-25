@@ -1,1 +1,1 @@
-from .bootstrapper import *
+from .bootstrapper import Bootstrapper
