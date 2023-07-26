@@ -1,5 +1,7 @@
 from setuptools import find_packages, setup
 
+version = "0.1.1"
+
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
@@ -11,9 +13,9 @@ setup(
     description="Bootstrapper for Python documentation translations",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    version="0.1.0",
-    license="CC0-1.0",
-    download_url="https://github.com/egeakman/python-docs-bootstrapper/archive/0.1.0.tar.gz",
+    version=version,
+    license="MIT",
+    download_url=f"https://github.com/egeakman/python-docs-bootstrapper/archive/{version}.tar.gz",
     packages=find_packages(where="."),
     install_requires=["sphinx==4.5.0"],
     include_package_data=True,
@@ -31,7 +33,7 @@ setup(
         "Programming Language :: Python :: 3 :: Only",
         "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
-        "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: Microsoft :: Windows",
         "Operating System :: POSIX :: Linux",
         "Operating System :: MacOS :: MacOS X",
