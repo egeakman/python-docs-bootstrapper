@@ -26,6 +26,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Install tree (only macOS)
+        if: matrix.os == 'macos-latest'
+        run: brew install tree
+
       - name: Install the package
         run: pip install .
 
