@@ -59,18 +59,17 @@ class Bootstrapper:
                     "clone",
                     "https://github.com/python/cpython.git",
                     self.cpython_repo,
+                    f"--branch={self.branch}",
                     "-q",
                 ],
                 check=True,
             )
-            print("✅")
 
-        subprocess.run(
-            ["git", "-C", self.cpython_repo, "checkout", self.branch, "-q"], check=True
-        )
         subprocess.run(
             ["git", "-C", self.cpython_repo, "pull", "--ff-only", "-q"], check=True
         )
+
+        print("✅")
 
         logger.info("Building gettext files...")
         subprocess.run(

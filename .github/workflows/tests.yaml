@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
-        python-version: ["3.11", "3.12-dev"]
+        python-version: ["3.11", "3.12"]
 
     steps:
       - name: Checkout repo
@@ -41,7 +41,7 @@ jobs:
       - name: Install the package
         run: pip install .
 
-      - name: Run the package
+      - name: Run the bootstrapper
         run: bootstrapper tr -b ${{ matrix.python-version }}
 
       - name: See results (non-Windows)
