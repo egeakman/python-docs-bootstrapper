@@ -15,7 +15,8 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
-        python-version: ["3.11", "3.12"]
+        python-version: ["3.11", "3.12-dev"]
+        build-version: ["3.11", "3.12"]
 
     steps:
       - name: Checkout repo
@@ -42,7 +43,7 @@ jobs:
         run: pip install .
 
       - name: Run the bootstrapper
-        run: bootstrapper tr -b ${{ matrix.python-version }}
+        run: bootstrapper tr -b ${{ matrix.build-version }}
 
       - name: See results (non-Windows)
         if: matrix.os != 'windows-latest'
