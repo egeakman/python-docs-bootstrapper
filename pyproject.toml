@@ -1,45 +1,47 @@
 [build-system]
-requires = ["setuptools>=61.2"]
 build-backend = "setuptools.build_meta"
+requires = [
+  "setuptools>=61.2",
+]
 
 [project]
 name = "python-docs-bootstrapper"
 version = "0.1.1"
-authors = [{name = "egeakman", email = "me@egeakman.dev"}]
-license = {text = "MIT"}
 description = "Bootstrapper for Python documentation translations"
+readme = "README.md"
 keywords = [
-    "documentation",
-    "translation",
-    "sphinx",
-    "i18n",
-    "python-docs",
-    "CLI",
-    "automation",
-    "utilities",
+  "automation",
+  "CLI",
+  "documentation",
+  "i18n",
+  "python-docs",
+  "sphinx",
+  "translation",
+  "utilities",
 ]
-classifiers = [
-    "Topic :: Utilities",
-    "Programming Language :: Python :: 3 :: Only",
-    "Development Status :: 5 - Production/Stable",
-    "Environment :: Console",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: Microsoft :: Windows",
-    "Operating System :: POSIX :: Linux",
-    "Operating System :: MacOS :: MacOS X",
-]
+license = {text = "MIT"}
+authors = [{name = "egeakman", email = "me@egeakman.dev"}]
 requires-python = ">=3.10"
-dependencies = ["sphinx==4.5.0"]
-
-[project.readme]
-file = "README.md"
-content-type = "text/markdown"
-
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: MacOS :: MacOS X",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Utilities",
+]
+dependencies = [
+  "sphinx==4.5",
+]
 [project.urls]
-Homepage = "https://github.com/egeakman/python-docs-bootstrapper"
 Download = "https://github.com/egeakman/python-docs-bootstrapper/archive/0.1.1.tar.gz"
+Homepage = "https://github.com/egeakman/python-docs-bootstrapper"
 Issues = "https://github.com/egeakman/python-docs-bootstrapper/issues"
-
 [project.scripts]
 bootstrapper = "bootstrapper.bootstrapper:main"
 
