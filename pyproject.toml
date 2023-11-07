@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-docs-bootstrapper"
+version = "0.1.1"
+authors = [{name = "egeakman", email = "me@egeakman.dev"}]
+license = {text = "MIT"}
+description = "Bootstrapper for Python documentation translations"
+keywords = [
+    "documentation",
+    "translation",
+    "sphinx",
+    "i18n",
+    "python-docs",
+    "CLI",
+    "automation",
+    "utilities",
+]
+classifiers = [
+    "Topic :: Utilities",
+    "Programming Language :: Python :: 3 :: Only",
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+]
+requires-python = ">=3.10"
+dependencies = ["sphinx==4.5.0"]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+Homepage = "https://github.com/egeakman/python-docs-bootstrapper"
+Download = "https://github.com/egeakman/python-docs-bootstrapper/archive/0.1.1.tar.gz"
+Issues = "https://github.com/egeakman/python-docs-bootstrapper/issues"
+
+[project.scripts]
+bootstrapper = "bootstrapper.bootstrapper:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+namespaces = false
+
+[tool.setuptools.package-data]
+bootstrapper = [
+    "data/.gitignore",
+    "data/Makefile",
+    "data/README.md",
+]
