@@ -2,7 +2,7 @@
 
 Hello! This is the repository of the {{translation.language}} translation of the Python documentation.
 
-You can refer to the following resources throughout this journey:
+**You can refer to the following resources throughout this journey:**
 
 - [DevGuide Translating Section](https://devguide.python.org/documentation/translating/) (add your translation to the list!)
 - [PEP 545](https://www.python.org/dev/peps/pep-0545/) (the PEP that describes the translation process)
@@ -14,4 +14,4 @@ Python's documentation is maintained using a global network of volunteers. By po
 
 You signify acceptance of this agreement by submitting your work to the PSF for inclusion in the documentation.
 
-**Do not forget to replace this file with your own README that describes your translation and community!**
+***Do not forget to replace this file with your own README that describes your translation and community, while keeping the above agreement!***

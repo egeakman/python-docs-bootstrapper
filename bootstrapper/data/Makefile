@@ -10,9 +10,7 @@
 # - make clean # To remove build artifacts
 # - make fuzzy  # To find fuzzy strings
 #
-# Modes are: autobuild-stable, autobuild-dev, and autobuild-html,
-# documented in gen/src/3.6/Doc/Makefile as we're only delegating the
-# real work to the Python Doc Makefile.
+# Modes are: autobuild-stable, autobuild-dev, and autobuild-html
 
 # Configuration
 
