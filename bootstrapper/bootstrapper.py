@@ -46,7 +46,7 @@ class Bootstrapper:
         logger.info("Creating directories...")
         os.makedirs(self.translation_repo, exist_ok=True)
         os.makedirs(self.cpython_repo, exist_ok=True)
-        print("✅")
+        logger.info("✅\n")
 
     def setup_cpython_repo(self) -> None:
         if not os.path.exists(f"{self.cpython_repo}/.git") and not os.path.isdir(
@@ -64,12 +64,13 @@ class Bootstrapper:
                 ],
                 check=True,
             )
+            logger.info("✅\n")
 
+        logger.info("Updating CPython repo...")
         subprocess.run(
             ["git", "-C", self.cpython_repo, "pull", "--ff-only", "-q"], check=True
         )
-
-        print("✅")
+        logger.info("✅\n")
 
         logger.info("Building gettext files...")
         subprocess.run(
@@ -84,7 +85,7 @@ class Bootstrapper:
             cwd=self.cpython_repo,
             check=True,
         )
-        print("✅")
+        logger.info("✅\n")
 
     def setup_translation_repo(self) -> None:
         logger.info("Initializing translation repo...")
@@ -92,13 +93,10 @@ class Bootstrapper:
         subprocess.run(
             ["git", "branch", "-m", self.branch], cwd=self.translation_repo, check=True
         )
-        print("✅")
+        logger.info("✅\n")
 
         logger.info("Copying gettext files...")
-        files = glob.glob(f"{self.cpython_repo}/pot/**/*.pot") + glob.glob(
-            f"{self.cpython_repo}/pot/*.pot"
-        )
-
+        files = glob.glob(f"{self.cpython_repo}/pot/**/*.pot", recursive=True)
         files = [path.replace("\\", "/") for path in files]
 
         for file in files:
@@ -107,13 +105,10 @@ class Bootstrapper:
                     ".pot", ".po"
                 )
             )
-
-            if len(file.split("/")) > 5:
-                os.makedirs("/".join(dest_path.split("/")[:2]), exist_ok=True)
-
+            os.makedirs(os.path.dirname(dest_path), exist_ok=True)
             shutil.copyfile(file, dest_path)
             files[files.index(file)] = dest_path
-        print("✅")
+        logger.info("✅\n")
 
         logger.info("Cleaning up gettext files...")
         for file in files:
@@ -122,7 +117,7 @@ class Bootstrapper:
                 contents = re.sub("^#: .*Doc/", "#: ", contents, flags=re.M)
             with open(file, "w", encoding="utf-8") as f:
                 f.write(contents)
-        print("✅")
+        logger.info("✅\n")
 
     def create_readme(self) -> None:
         logger.info("Creating README.md...")
@@ -140,7 +135,7 @@ class Bootstrapper:
 
         with open(f"{self.translation_repo}/README.md", "w", encoding="utf-8") as f:
             f.write(readme)
-        print("✅")
+        logger.info("✅\n")
 
     def create_gitignore(self) -> None:
         logger.info("Creating .gitignore...")
@@ -156,10 +151,10 @@ class Bootstrapper:
 
         with open(f"{self.translation_repo}/.gitignore", "w", encoding="utf-8") as f:
             f.write(gitignore)
-        print("✅")
+        logger.info("✅\n")
 
     def create_makefile(self) -> None:
-        logging.info("Creating .makefile...")
+        logging.info("Creating Makefile...")
         try:
             makefile = self._request(self.makefile_url)
         except (urllib.error.HTTPError, urllib.error.URLError):
@@ -186,7 +181,7 @@ class Bootstrapper:
 
         with open(f"{self.translation_repo}/Makefile", "w", encoding="utf-8") as f:
             f.write(makefile)
-        print("✅")
+        logger.info("✅\n")
 
     def run(self) -> None:
         try:

@@ -2,10 +2,6 @@
 
 This repository contains the scripts and data used to bootstrap a new translation of the Python documentation.
 
-## Why python-docs-bootstrapper?
-
-...
-
 ## Installation
 
 ```bash
