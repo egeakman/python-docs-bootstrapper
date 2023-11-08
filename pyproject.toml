@@ -39,7 +39,7 @@ dependencies = [
   "sphinx==4.5",
 ]
 [project.urls]
-Download = "https://github.com/egeakman/python-docs-bootstrapper/archive/0.1.1.tar.gz"
+Releases = "https://github.com/egeakman/python-docs-bootstrapper/releases"
 Homepage = "https://github.com/egeakman/python-docs-bootstrapper"
 Issues = "https://github.com/egeakman/python-docs-bootstrapper/issues"
 [project.scripts]
