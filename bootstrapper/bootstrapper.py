@@ -36,6 +36,7 @@ class Bootstrapper:
         self.readme_url = "https://raw.githubusercontent.com/egeakman/python-docs-bootstrapper/master/bootstrapper/data/README.md"
         self.gitignore_url = "https://raw.githubusercontent.com/egeakman/python-docs-bootstrapper/master/bootstrapper/data/.gitignore"
         self.makefile_url = "https://raw.githubusercontent.com/egeakman/python-docs-bootstrapper/master/bootstrapper/data/Makefile"
+        self.data_dir = f"{os.path.dirname(__file__)}/../python-docs-bootstrapper-data"
 
     def _request(self, url: str) -> str:
         with urllib.request.urlopen(url) as response:
@@ -126,9 +127,7 @@ class Bootstrapper:
             self.logger.warning(
                 "\n ⚠️ Failed to fetch README.md from GitHub, using local copy..."
             )
-            readme = Path(f"{os.path.dirname(__file__)}/data/README.md").read_text(
-                encoding="utf-8"
-            )
+            readme = Path(f"{self.data_dir}/README.md").read_text(encoding="utf-8")
         readme = readme.replace("{{translation.language}}", self.language)
         with open(f"{self.translation_repo}/README.md", "w", encoding="utf-8") as f:
             f.write(readme)
@@ -142,9 +141,7 @@ class Bootstrapper:
             self.logger.warning(
                 "\n ⚠️ Failed to fetch .gitignore from GitHub, using local copy..."
             )
-            gitignore = Path(f"{os.path.dirname(__file__)}/data/.gitignore").read_text(
-                encoding="utf-8"
-            )
+            gitignore = Path(f"{self.data_dir}/.gitignore").read_text(encoding="utf-8")
         with open(f"{self.translation_repo}/.gitignore", "w", encoding="utf-8") as f:
             f.write(gitignore)
         self.logger.info("✅\n")
@@ -157,9 +154,7 @@ class Bootstrapper:
             self.logger.warning(
                 "\n ⚠️ Failed to fetch Makefile from GitHub, using local copy..."
             )
-            makefile = Path(f"{os.path.dirname(__file__)}/data/Makefile").read_text(
-                encoding="utf-8"
-            )
+            makefile = Path(f"{self.data_dir}/Makefile").read_text(encoding="utf-8")
         head = (
             subprocess.run(
                 ["git", "-C", self.cpython_repo, "rev-parse", "HEAD"],
