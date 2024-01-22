@@ -1,12 +1,11 @@
 [build-system]
-build-backend = "setuptools.build_meta"
+build-backend = "hatchling.build"
 requires = [
-  "setuptools>=61.2",
+  "hatchling",
 ]
 
 [project]
 name = "python-docs-bootstrapper"
-version = "0.1.2"
 description = "Bootstrapper for Python documentation translations"
 readme = "README.md"
 keywords = [
@@ -35,8 +34,11 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Topic :: Utilities",
 ]
+dynamic = [
+  "version",
+]
 dependencies = [
-  "sphinx==4.5",
+  "sphinx",
 ]
 [project.urls]
 Homepage = "https://github.com/egeakman/python-docs-bootstrapper"
@@ -45,16 +47,16 @@ Releases = "https://github.com/egeakman/python-docs-bootstrapper/releases"
 [project.scripts]
 bootstrapper = "bootstrapper.bootstrapper:main"
 
-[tool.setuptools]
-include-package-data = true
+[tool.hatch.build]
+packages = ["bootstrapper"]
+isolated = true
 
-[tool.setuptools.packages.find]
-where = ["."]
-namespaces = false
+[tool.hatch.build.force-include]
+"data" = "python-docs-bootstrapper-data"
 
-[tool.setuptools.package-data]
-bootstrapper = [
-    "data/.gitignore",
-    "data/Makefile",
-    "data/README.md",
-]
+[tool.hatch.version]
+path = "bootstrapper/__init__.py"
+
+[tool.isort]
+profile = "black"
+known_first_party = "bootstrapper"
