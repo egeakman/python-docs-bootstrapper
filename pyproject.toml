@@ -18,8 +18,10 @@ keywords = [
   "translation",
   "utilities",
 ]
-license = {text = "MIT"}
-authors = [{name = "egeakman", email = "me@egeakman.dev"}]
+license = { text = "MIT" }
+authors = [
+  { name = "egeakman", email = "me@egeakman.dev" },
+]
 requires-python = ">=3.10"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -41,15 +43,15 @@ dynamic = [
 dependencies = [
   "sphinx",
 ]
-[project.urls]
-Homepage = "https://github.com/egeakman/python-docs-bootstrapper"
-Issues = "https://github.com/egeakman/python-docs-bootstrapper/issues"
-Releases = "https://github.com/egeakman/python-docs-bootstrapper/releases"
-[project.scripts]
-bootstrapper = "bootstrapper.bootstrapper:main"
+urls.Homepage = "https://github.com/egeakman/python-docs-bootstrapper"
+urls.Issues = "https://github.com/egeakman/python-docs-bootstrapper/issues"
+urls.Releases = "https://github.com/egeakman/python-docs-bootstrapper/releases"
+scripts.bootstrapper = "bootstrapper.bootstrapper:main"
 
 [tool.hatch.build]
-packages = ["bootstrapper"]
+packages = [
+  "bootstrapper",
+]
 isolated = true
 
 [tool.hatch.build.force-include]
